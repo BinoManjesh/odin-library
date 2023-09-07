@@ -7,8 +7,9 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-Book.prototype.getDOMNode = function() {
+Book.prototype.getDOMNode = function(index) {
     const book = document.createElement("div");
+    book.dataset.index = index;
     book.className = "book";
     const list = document.createElement("ul");
     book.appendChild(list);
@@ -27,7 +28,9 @@ Book.prototype.getDOMNode = function() {
 
 let library = [new Book("Bruh", "bino", 69, true), new Book("HooHah", "jeff", "420", false)];
 const container = document.querySelector("div.container");
-library.forEach((x)=>container.appendChild(x.getDOMNode()));
+for (const [index, book] of library.entries()) {
+    container.appendChild(book.getDOMNode(index));
+}
 
 const newBookButton = document.querySelector("button.new-book");
 const dialog = document.querySelector("dialog.new-book");
@@ -43,5 +46,5 @@ submitButton.addEventListener("click", ()=>{
     const book = new
         Book(formData.title, formData.author, formData.pages, formData.read);
     library.push(book);
-    container.appendChild(book.getDOMNode());
+    container.appendChild(book.getDOMNode(library.length - 1));
 });
