@@ -19,8 +19,8 @@ Book.prototype.getDOMNode = function() {
         return listItem;
     }
 
-    [`Title: ${this.title}`, `Author: ${this.author}`, `Pages: ${this.pages}`,
-        `Read: ${this.read ? "Yes" : "No"}`]
+    [`"${this.title}"`, `by ${this.author}`, `${this.pages} Pages`,
+        `${this.read ? "Read" : "Not Read"}`]
         .forEach((x)=>list.appendChild(getListItem(x)));
     return book;
 };
