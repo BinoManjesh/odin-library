@@ -7,6 +7,21 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <button class="new-book">Add new book</button>
     <div class="container"></div>
+    <dialog class="new-book">
+      <form method="dialog">
+        <!-- (label[for="$#"]{$#}+input[id="$#"name="$#"])* -->
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title">
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author">
+        <label for="pages">Pages</label>
+        <input min="1" type="number" id="pages" name="pages">
+        <label for="read">Read ?</label>
+        <input type="checkbox" id="read" name="read">
+        <button type="button">Submit</button>
+      </form>
+    </dialog>
   </body>
 </html>

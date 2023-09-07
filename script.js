@@ -28,3 +28,20 @@ Book.prototype.getDOMNode = function() {
 let library = [new Book("Bruh", "bino", 69, true), new Book("HooHah", "jeff", "420", false)];
 const container = document.querySelector("div.container");
 library.forEach((x)=>container.appendChild(x.getDOMNode()));
+
+const newBookButton = document.querySelector("button.new-book");
+const dialog = document.querySelector("dialog.new-book");
+newBookButton.addEventListener("click", ()=>dialog.showModal());
+
+const form = document.querySelector("form");
+const submitButton = document.querySelector("form>button");
+submitButton.addEventListener("click", ()=>{
+    dialog.close();
+    const formData = Object.fromEntries(new FormData(form));
+    formData.read = "read" in formData;
+    console.log(formData);
+    const book = new
+        Book(formData.title, formData.author, formData.pages, formData.read);
+    library.push(book);
+    container.appendChild(book.getDOMNode());
+});
