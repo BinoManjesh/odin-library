@@ -23,6 +23,18 @@ Book.prototype.getDOMNode = function(index) {
     [`"${this.title}"`, `by ${this.author}`, `${this.pages} Pages`,
         `${this.read ? "Read" : "Not Read"}`]
         .forEach((x)=>list.appendChild(getListItem(x)));
+    
+    const button = document.createElement("button")
+    button.textContent = "Remove"
+    book.appendChild(button);
+    function onRemove() {
+        library.splice(this.dataset.index, 1);
+        this.remove();
+        for (const [index, node] of Array.from(container.children).entries()) {
+            node.dataset.index = index;
+        }
+    }
+    book.addEventListener("click", onRemove);
     return book;
 };
 
