@@ -37,10 +37,10 @@ const dialog = document.querySelector("dialog.new-book");
 newBookButton.addEventListener("click", ()=>dialog.showModal());
 
 const form = document.querySelector("form");
-const submitButton = document.querySelector("form>button");
-submitButton.addEventListener("click", ()=>{
-    dialog.close();
-    const formData = Object.fromEntries(new FormData(form));
+form.addEventListener("submit", (e)=>{
+    console.log(e.target);
+    const formData = Object.fromEntries(new FormData(e.target));
+    e.target.reset();
     formData.read = "read" in formData;
     console.log(formData);
     const book = new
