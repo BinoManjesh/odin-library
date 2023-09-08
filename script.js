@@ -12,6 +12,7 @@ Book.prototype.getDOMNode = function(index) {
     book.dataset.index = index;
     book.className = "book";
     const list = document.createElement("ul");
+    list.className = "book";
     book.appendChild(list);
 
     function getListItem(text) {
@@ -25,9 +26,14 @@ Book.prototype.getDOMNode = function(index) {
         .forEach((x)=>list.appendChild(getListItem(x)));
     
     const button = document.createElement("button")
-    button.textContent = "Remove"
-    book.appendChild(button);
-    function onRemove() {
+    button.textContent = "×"
+    const li = document.createElement("li");
+    li.appendChild(button);
+    list.appendChild(li);
+    function onRemove(e) {
+        if (e.target != button) {
+            return;
+        }
         library.splice(this.dataset.index, 1);
         this.remove();
         for (const [index, node] of Array.from(container.children).entries()) {

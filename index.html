@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name">
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -12,15 +13,19 @@
     <dialog class="new-book">
       <form method="dialog">
         <!-- (label[for="$#"]{$#}+input[id="$#"name="$#"])* -->
-        <label for="title">Title</label>
-        <input required type="text" id="title" name="title">
-        <label for="author">Author</label>
-        <input required type="text" id="author" name="author">
-        <label for="pages">Pages</label>
-        <input required min="1" type="number" id="pages" name="pages">
-        <label for="read">Read ?</label>
-        <input type="checkbox" id="read" name="read">
-        <button>Submit</button>
+        <ul class="field">
+          <li><label for="title">Title</label></li>
+          <li><input required type="text" id="title" name="title"></li>
+          <li><label for="author">Author</label></li>
+          <li><input required type="text" id="author" name="author"></li>
+          <li><label for="pages">Pages</label></li>
+          <li><input required min="1" type="number" id="pages" name="pages"></li>
+          <li>
+            <label for="read">Read ?</label>
+            <input type="checkbox" id="read" name="read">
+          </li>
+          <li><button>Submit</button></li>
+        </ul>
       </form>
     </dialog>
   </body>
