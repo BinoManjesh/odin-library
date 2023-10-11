@@ -56,11 +56,9 @@ newBookButton.addEventListener("click", ()=>dialog.showModal());
 
 const form = document.querySelector("form");
 form.addEventListener("submit", (e)=>{
-    console.log(e.target);
     const formData = Object.fromEntries(new FormData(e.target));
     e.target.reset();
     formData.read = "read" in formData;
-    console.log(formData);
     const book = new
         Book(formData.title, formData.author, formData.pages, formData.read);
     library.push(book);
